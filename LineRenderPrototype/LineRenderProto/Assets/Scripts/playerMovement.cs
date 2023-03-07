@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class playerMovement : MonoBehaviour
 {
-    public float speed, turnSpeed, inputX, rotation;
+    public float speed, tempSpeed, turnSpeed, inputX, rotation;
     public bool _canMove;
     private Rigidbody2D rb;
 
@@ -13,14 +13,17 @@ public class playerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         //_canMove = false;
+        tempSpeed = speed;
+        speed = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyUp(KeyCode.Space) && !_canMove)
         {
             _canMove = true;
+            speed = tempSpeed;
         }
 
         if(_canMove)
