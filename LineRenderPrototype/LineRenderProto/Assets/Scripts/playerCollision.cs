@@ -12,20 +12,16 @@ public class playerCollision : MonoBehaviour
         playerM = GetComponent<playerMovement>();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        //audioSource.PlayOneShot(SFXBounce);
-        //_contact = true;
-        playerM._canMove = false;
-        var offset = transform.position - collision.gameObject.transform.position;
-        playerM.rotation = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, playerM.rotation);
 
-        //VFXClink.Play();
-        StartCoroutine(dazedTime());
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Trap")
+        {
+            playerM.death();
+        }
     }
 
-    
+
 
     IEnumerator dazedTime()
     {
