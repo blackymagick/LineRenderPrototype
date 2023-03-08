@@ -42,6 +42,7 @@ public class playerMovement : MonoBehaviour
     {
         _canMove = false;
         speed = 0;
+        gameObject.GetComponent<CircleCollider2D>().enabled = false;
     }
 
 

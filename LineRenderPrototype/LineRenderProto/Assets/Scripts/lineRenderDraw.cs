@@ -9,10 +9,11 @@ public class lineRenderDraw : MonoBehaviour
 {
     LineRenderer linerenderer = new LineRenderer();
     EdgeCollider2D edgecollider = new EdgeCollider2D();
-
-    List<Vector2> pointsList;
+    public int count;
+    public List<Vector2> pointsList;
     public float padding = .1f;
     public Transform headList;
+    public bool noLine;
 
     // Start is called before the first frame update
     void Start()
@@ -21,12 +22,14 @@ public class lineRenderDraw : MonoBehaviour
         edgecollider = GetComponent<EdgeCollider2D>();
         pointsList = new List<Vector2>();
         spawnPoint();
+        noLine = true;
         linerenderer.useWorldSpace = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(noLine)
         if (Vector3.Distance(pointsList.Last(), headList.position) > padding)
         {
             spawnPoint();
@@ -49,8 +52,28 @@ public class lineRenderDraw : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
+            
             GameObject.FindGameObjectWithTag("Player").GetComponent<playerMovement>().death();
+            //count = pointsList.Count;
+            StartCoroutine(removePoints());
         }
+    }
+
+
+    IEnumerator removePoints()
+    {
+        noLine = false;
+        while (1 < pointsList.Count)
+        {
+            
+            pointsList.RemoveAt(0);
+            linerenderer.positionCount = pointsList.Count;
+            yield return new WaitForSeconds(0.1f);
+            linerenderer.SetPosition(pointsList.Count-1, headList.position);
+            
+            
+        }
+       
     }
 
 } 

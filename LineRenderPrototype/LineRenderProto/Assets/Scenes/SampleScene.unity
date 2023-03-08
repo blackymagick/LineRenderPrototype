@@ -3323,6 +3323,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible
       objectReference: {fileID: 0}
+    - target: {fileID: 4087147619387426569, guid: 07419ae2368e8b343a37d8c09b592b74, type: 3}
+      propertyPath: m_TagString
+      value: Collectible
+      objectReference: {fileID: 0}
     - target: {fileID: 8503651598362500264, guid: 07419ae2368e8b343a37d8c09b592b74, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -4443,6 +4447,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible
       objectReference: {fileID: 0}
+    - target: {fileID: 4087147619387426569, guid: 07419ae2368e8b343a37d8c09b592b74, type: 3}
+      propertyPath: m_TagString
+      value: Collectible
+      objectReference: {fileID: 0}
     - target: {fileID: 8503651598362500264, guid: 07419ae2368e8b343a37d8c09b592b74, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -5072,6 +5080,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4087147619387426569, guid: 07419ae2368e8b343a37d8c09b592b74, type: 3}
       propertyPath: m_Name
+      value: Collectible
+      objectReference: {fileID: 0}
+    - target: {fileID: 4087147619387426569, guid: 07419ae2368e8b343a37d8c09b592b74, type: 3}
+      propertyPath: m_TagString
       value: Collectible
       objectReference: {fileID: 0}
     - target: {fileID: 8503651598362500264, guid: 07419ae2368e8b343a37d8c09b592b74, type: 3}
@@ -5939,6 +5951,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4087147619387426569, guid: 07419ae2368e8b343a37d8c09b592b74, type: 3}
       propertyPath: m_Name
+      value: Collectible
+      objectReference: {fileID: 0}
+    - target: {fileID: 4087147619387426569, guid: 07419ae2368e8b343a37d8c09b592b74, type: 3}
+      propertyPath: m_TagString
       value: Collectible
       objectReference: {fileID: 0}
     - target: {fileID: 8503651598362500264, guid: 07419ae2368e8b343a37d8c09b592b74, type: 3}
@@ -7416,6 +7432,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible
       objectReference: {fileID: 0}
+    - target: {fileID: 4087147619387426569, guid: 07419ae2368e8b343a37d8c09b592b74, type: 3}
+      propertyPath: m_TagString
+      value: Collectible
+      objectReference: {fileID: 0}
     - target: {fileID: 8503651598362500264, guid: 07419ae2368e8b343a37d8c09b592b74, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -8750,6 +8770,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4087147619387426569, guid: 07419ae2368e8b343a37d8c09b592b74, type: 3}
       propertyPath: m_Name
+      value: Collectible
+      objectReference: {fileID: 0}
+    - target: {fileID: 4087147619387426569, guid: 07419ae2368e8b343a37d8c09b592b74, type: 3}
+      propertyPath: m_TagString
       value: Collectible
       objectReference: {fileID: 0}
     - target: {fileID: 8503651598362500264, guid: 07419ae2368e8b343a37d8c09b592b74, type: 3}
@@ -11357,6 +11381,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible
       objectReference: {fileID: 0}
+    - target: {fileID: 4087147619387426569, guid: 07419ae2368e8b343a37d8c09b592b74, type: 3}
+      propertyPath: m_TagString
+      value: Collectible
+      objectReference: {fileID: 0}
     - target: {fileID: 8503651598362500264, guid: 07419ae2368e8b343a37d8c09b592b74, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -13124,6 +13152,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible
       objectReference: {fileID: 0}
+    - target: {fileID: 4087147619387426569, guid: 07419ae2368e8b343a37d8c09b592b74, type: 3}
+      propertyPath: m_TagString
+      value: Collectible
+      objectReference: {fileID: 0}
     - target: {fileID: 8503651598362500264, guid: 07419ae2368e8b343a37d8c09b592b74, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -14331,6 +14363,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4087147619387426569, guid: 07419ae2368e8b343a37d8c09b592b74, type: 3}
       propertyPath: m_Name
+      value: Collectible
+      objectReference: {fileID: 0}
+    - target: {fileID: 4087147619387426569, guid: 07419ae2368e8b343a37d8c09b592b74, type: 3}
+      propertyPath: m_TagString
       value: Collectible
       objectReference: {fileID: 0}
     - target: {fileID: 8503651598362500264, guid: 07419ae2368e8b343a37d8c09b592b74, type: 3}
