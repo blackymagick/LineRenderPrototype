@@ -21,6 +21,7 @@ public class RotateObject : MonoBehaviour
         {
             randomTime = Random.Range(1, 10);
         }));
+        seq.Append(transform.DOScale(0.95f, 0.3f).SetLoops(2, LoopType.Yoyo).SetEase(Ease.OutQuad));
         seq.AppendInterval(randomTime);
         seq.SetLoops(-1,LoopType.Yoyo);
     }

@@ -5,11 +5,13 @@ using UnityEngine;
 public class playerCollision : MonoBehaviour
 {
     private playerMovement playerM;
+    private playerEvents playerEvents;
     public float waitTime = 0.8f;
 
     private void Start()
     {
         playerM = GetComponent<playerMovement>();
+        playerEvents = GetComponent<playerEvents>();
     }
 
 
@@ -17,7 +19,8 @@ public class playerCollision : MonoBehaviour
     {
         if (collision.gameObject.tag == "Trap")
         {
-            playerM.death();
+
+            playerEvents.onDeathAction?.Invoke();
         }
     }
 

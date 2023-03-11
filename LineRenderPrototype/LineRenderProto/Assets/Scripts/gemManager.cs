@@ -32,7 +32,7 @@ public class gemManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gemText.text = Gems.ToString() + "/" + MaxGems.ToString();
+        //gemText.text = Gems.ToString() + "/" + MaxGems.ToString();
 
         if(Gems >= MaxGems)
         {

@@ -5,9 +5,11 @@ using UnityEngine;
 public class playerMovement : MonoBehaviour
 {
     public float speed, tempSpeed, boostSpeed, boostTime, boostCoolDown, turnSpeed, inputX, rotation;
-    public bool _canMove;
-    public bool _canBoost;
+    public bool _canMove, _canBoost, _gameStart;
+    public ParticleSystem vfxBoostReady;
     private Rigidbody2D rb;
+    private Vector3 startPosition;
+    private Quaternion startRotation;
 
     // Start is called before the first frame update
     void Awake()
@@ -16,45 +18,47 @@ public class playerMovement : MonoBehaviour
         //_canMove = false;
         tempSpeed = speed;
         speed = 0;
-       
+        startPosition = transform.position;
+        startRotation = transform.rotation;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyUp(KeyCode.Space) && !_canMove)
+        if(Input.GetKeyUp(KeyCode.Space) && !_canMove && !_gameStart)
         {
             _canMove = true;
-            _canBoost = true;
+            _gameStart = true;
+            speed = tempSpeed;
+        }
+        else if(Input.GetKeyUp(KeyCode.Space) && !_canMove)
+        {
+            _canMove = true;
             speed = tempSpeed;
         }
 
-        if(_canMove)
+        if (!_canMove) return;
+        
+        inputX = Input.GetAxisRaw("Horizontal");
+        rotation = inputX * turnSpeed * Time.deltaTime;
+        transform.Rotate(Vector3.forward * rotation);
+
+        if (Input.GetKeyUp(KeyCode.Space) && _canBoost && _canMove)
         {
-            inputX = Input.GetAxisRaw("Horizontal");
-            rotation = inputX * turnSpeed * Time.deltaTime;
-            transform.Rotate(Vector3.forward * rotation);
+            boostCoolDown = 0;
+            
+            StartCoroutine(speedBoosted());
+        }
 
-            if (Input.GetKeyUp(KeyCode.Space) && _canBoost && _canMove)
+        if (!_canBoost)
+        {
+            boostCoolDown += Time.deltaTime;
+            if (boostCoolDown >= 5)
             {
-                boostCoolDown = 0;
-                _canBoost = false;
-                StartCoroutine(speedBoosted());
-            }
-
-            if (!_canBoost)
-            {
-                boostCoolDown += Time.deltaTime;
-                if (boostCoolDown >= 5)
-                {
-                    _canBoost = true;
-                }
+                vfxBoostReady.Play();
+                _canBoost = true;
             }
         }
-        
-
-
-        
     }
 
     private void FixedUpdate()
@@ -65,9 +69,19 @@ public class playerMovement : MonoBehaviour
 
     public void death()
     {
+       
+        gameObject.GetComponent<CircleCollider2D>().enabled = false;
+    }
+
+    public void ResetPosition()
+    {
+        transform.position = startPosition;
+        transform.rotation = startRotation;
         _canMove = false;
         speed = 0;
-        gameObject.GetComponent<CircleCollider2D>().enabled = false;
+        boostCoolDown = 0;
+        _canBoost = false;
+
     }
 
 
@@ -76,6 +90,8 @@ public class playerMovement : MonoBehaviour
         speed = boostSpeed;
         yield return new WaitForSeconds(boostTime);
         speed = tempSpeed;
+        _canBoost = false;
+        boostCoolDown = 0;
     }
 
 }

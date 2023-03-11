@@ -48,17 +48,15 @@ public class lineRenderDraw : MonoBehaviour
         linerenderer.SetPosition(pointsList.Count - 1, headList.position);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "Player")
-        {
-            
-            GameObject.FindGameObjectWithTag("Player").GetComponent<playerMovement>().death();
-            //count = pointsList.Count;
-            StartCoroutine(removePoints());
-        }
-    }
 
+    public void clearPoints()
+    {
+        pointsList.Clear();
+        linerenderer.positionCount = 0;
+        spawnPoint();
+        noLine = true;
+
+    }
 
     IEnumerator removePoints()
     {
