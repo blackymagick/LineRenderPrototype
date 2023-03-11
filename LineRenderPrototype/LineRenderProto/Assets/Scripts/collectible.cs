@@ -8,6 +8,7 @@ public class collectible : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
+            gemManager.Instance.addGem();
             Destroy(this.gameObject);
         }
     }

@@ -34,9 +34,10 @@ public class gemManager : MonoBehaviour
     {
         gemText.text = Gems.ToString() + "/" + MaxGems.ToString();
 
-        if(Gems == MaxGems)
+        if(Gems >= MaxGems)
         {
             GemsCollected();
+            EndGoal.SetActive(true);
         }
     }
 
@@ -56,7 +57,7 @@ public class gemManager : MonoBehaviour
 
     void GemsCollected()
     {
-        EndGoal.SetActive(true);
+        
     }
 
 }
