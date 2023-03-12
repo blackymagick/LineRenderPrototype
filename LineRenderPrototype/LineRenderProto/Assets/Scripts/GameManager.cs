@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public int currentLevelIndex;
     public int nextLevelIndex;
+    public float waitTime = 1.0f;
 
     private void Awake()
     {
@@ -45,6 +46,14 @@ public class GameManager : MonoBehaviour
 
     public void nextLevel()
     {
+       StartCoroutine(toNextLevel());
+    }
+
+    IEnumerator toNextLevel()
+    {
+        Debug.Log("End Level");
+        yield return new WaitForSeconds(waitTime);
         SceneManager.LoadScene(nextLevelIndex);
     }
+
 }

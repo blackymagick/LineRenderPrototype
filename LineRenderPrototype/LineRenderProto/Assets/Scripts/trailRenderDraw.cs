@@ -34,7 +34,7 @@ public class trailRenderDraw : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
 
-            GameObject.FindGameObjectWithTag("Player").GetComponent<playerMovement>().death();
+           // GameObject.FindGameObjectWithTag("Player").GetComponent<playerMovement>().death();
         }
     }
 }

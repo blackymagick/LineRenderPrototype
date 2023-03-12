@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class playerMovement : MonoBehaviour
 {
-    public float speed, tempSpeed, boostSpeed, boostTime, boostCoolDown, turnSpeed, inputX, rotation;
+    public float speed, tempSpeed, boostSpeed, boostTime, boostCoolDown, turnSpeed, inputX, rotation, rotationSpeed;
     public bool _canMove, _canBoost, _gameStart;
-    public ParticleSystem vfxBoostReady;
+    public ParticleSystem vfxBoostReady, vfxCollection;
     private Rigidbody2D rb;
     private Vector3 startPosition;
     private Quaternion startRotation;
@@ -25,6 +25,11 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!_gameStart)
+        {
+            transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
+        }
+
         if(Input.GetKeyUp(KeyCode.Space) && !_canMove && !_gameStart)
         {
             _canMove = true;
@@ -67,21 +72,19 @@ public class playerMovement : MonoBehaviour
         rb.velocity = transform.right * speed * Time.deltaTime;
     }
 
-    public void death()
-    {
-       
-        gameObject.GetComponent<CircleCollider2D>().enabled = false;
-    }
-
     public void ResetPosition()
     {
         transform.position = startPosition;
         transform.rotation = startRotation;
         _canMove = false;
+    }
+
+    public void EndMovement()
+    {
+        
         speed = 0;
         boostCoolDown = 0;
         _canBoost = false;
-
     }
 
 

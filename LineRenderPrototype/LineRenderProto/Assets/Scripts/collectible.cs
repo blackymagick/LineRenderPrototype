@@ -11,12 +11,5 @@ public class collectible : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "Player")
-        {
-            gemManager.Instance.addGem();
-            gameObject.SetActive(false);
-        }
-    }
+    
 }

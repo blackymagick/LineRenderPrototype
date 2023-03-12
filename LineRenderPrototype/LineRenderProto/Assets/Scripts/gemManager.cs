@@ -7,9 +7,9 @@ public class gemManager : MonoBehaviour
     public static gemManager Instance;
     public TextMeshProUGUI gemText;
     public List<GameObject> gemList = new List<GameObject>();
-    public GameObject EndGoal;
     public int Gems;
     public int MaxGems;
+    private screenShake screenShake;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -27,6 +27,7 @@ public class gemManager : MonoBehaviour
     {
         gemList.AddRange(GameObject.FindGameObjectsWithTag("Collectible"));
         MaxGems = gemList.Count;
+        screenShake = GameObject.FindObjectOfType<screenShake>();
     }
 
     // Update is called once per frame
@@ -36,14 +37,14 @@ public class gemManager : MonoBehaviour
 
         if(Gems >= MaxGems)
         {
-            GemsCollected();
-            EndGoal.SetActive(true);
+            GameManager.Instance.GoalAction?.Invoke();
         }
     }
 
     public void addGem()
     {
         Gems++;
+        screenShake.shakeCamera();
     }
 
     public void resetGems()
@@ -55,9 +56,5 @@ public class gemManager : MonoBehaviour
         }
     }
 
-    void GemsCollected()
-    {
-        
-    }
 
 }

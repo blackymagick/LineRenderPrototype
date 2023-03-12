@@ -51,10 +51,13 @@ public class lineRenderDraw : MonoBehaviour
 
     public void clearPoints()
     {
+        edgecollider.enabled = false;
         pointsList.Clear();
         linerenderer.positionCount = 0;
+        edgecollider.Reset();
+        edgecollider.enabled = true;
         spawnPoint();
-        noLine = true;
+       
 
     }
 

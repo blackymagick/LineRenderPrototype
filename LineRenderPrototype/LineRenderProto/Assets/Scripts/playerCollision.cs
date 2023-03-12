@@ -19,17 +19,27 @@ public class playerCollision : MonoBehaviour
     {
         if (collision.gameObject.tag == "Trap")
         {
+            StartCoroutine(dazedTime());
+        }
+        
+    }
 
-            playerEvents.onDeathAction?.Invoke();
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Collectible")
+        {
+            gemManager.Instance.addGem();
+            playerM.vfxCollection.Play();
+            collision.gameObject.SetActive(false);
         }
     }
 
 
-
     IEnumerator dazedTime()
     {
+        playerM.EndMovement();
         yield return new WaitForSeconds(waitTime);
-        playerM._canMove = true;
+        playerEvents.onDeathAction?.Invoke();
         //_contact = false;
     }
 }
