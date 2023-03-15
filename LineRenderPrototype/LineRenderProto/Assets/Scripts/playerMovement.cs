@@ -20,19 +20,20 @@ public class playerMovement : MonoBehaviour
         speed = 0;
         startPosition = transform.position;
         startRotation = transform.rotation;
+        GetComponent<CircleCollider2D>().enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!_gameStart)
-        {
-            transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
-        }
+        inputX = Input.GetAxisRaw("Horizontal");
+        rotation = inputX * turnSpeed * Time.deltaTime;
+        transform.Rotate(Vector3.forward * rotation);
 
-        if(Input.GetKeyUp(KeyCode.Space) && !_canMove && !_gameStart)
+        if (Input.GetKeyUp(KeyCode.Space) && !_canMove && !_gameStart)
         {
             _canMove = true;
+            GetComponent<CircleCollider2D>().enabled = true;
             _gameStart = true;
             speed = tempSpeed;
         }
@@ -44,9 +45,7 @@ public class playerMovement : MonoBehaviour
 
         if (!_canMove) return;
         
-        inputX = Input.GetAxisRaw("Horizontal");
-        rotation = inputX * turnSpeed * Time.deltaTime;
-        transform.Rotate(Vector3.forward * rotation);
+        
 
         if (Input.GetKeyUp(KeyCode.Space) && _canBoost && _canMove)
         {
@@ -74,9 +73,11 @@ public class playerMovement : MonoBehaviour
 
     public void ResetPosition()
     {
+        _gameStart= false;
         transform.position = startPosition;
         transform.rotation = startRotation;
         _canMove = false;
+        GetComponent<CircleCollider2D>().enabled = false;
     }
 
     public void EndMovement()
