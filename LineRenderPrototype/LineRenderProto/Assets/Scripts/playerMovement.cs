@@ -6,7 +6,7 @@ public class playerMovement : MonoBehaviour
 {
     public float speed, tempSpeed, boostSpeed, boostTime, boostCoolDown, turnSpeed, inputX, rotation, rotationSpeed;
     public bool _canMove, _canBoost, _gameStart;
-    public ParticleSystem vfxBoostReady, vfxCollection;
+    public ParticleSystem vfxBoostReady, vfxCollection, vfxDeath;
     private Rigidbody2D rb;
     private Vector3 startPosition;
     private Quaternion startRotation;
@@ -73,7 +73,7 @@ public class playerMovement : MonoBehaviour
 
     public void ResetPosition()
     {
-        _gameStart= false;
+        _gameStart = false;
         transform.position = startPosition;
         transform.rotation = startRotation;
         _canMove = false;

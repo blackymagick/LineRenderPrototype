@@ -38,6 +38,7 @@ public class playerCollision : MonoBehaviour
     IEnumerator dazedTime()
     {
         playerM.EndMovement();
+        playerM.vfxDeath.Play();
         yield return new WaitForSeconds(waitTime);
         playerEvents.onDeathAction?.Invoke();
         //_contact = false;
